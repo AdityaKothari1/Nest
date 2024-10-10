@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Poppins, Playfair_Display } from "next/font/google"; // Importing fonts
 import "./globals.css";
+import { Header } from "@/components/Headers/Header";
+import { Footer } from "@/components/Footer";
+import { Toaster } from "react-hot-toast";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const poppins = Poppins({
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const playfairdisplay = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -26,9 +29,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${poppins.variable} ${playfairdisplay.variable} antialiased`}
       >
+        <Header />
         {children}
+        <Footer />
+        <Toaster
+          containerStyle={{ zIndex: 9999 }}
+          position="top-center"
+          toastOptions={{ duration: 4000 }}
+        />
       </body>
     </html>
   );
