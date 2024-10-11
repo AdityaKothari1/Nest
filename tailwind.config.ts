@@ -10,8 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        poppins: ["var(--font-poppins)", "sans-serif"],
-        playfair: ["var(--font-playfair)", "serif"],
+        poppins: ["var(--font-poppins)"],
+        playfair: ["var(--font-playfair)"],
       },
       colors: {
         background: "var(--background)",

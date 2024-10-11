@@ -16,29 +16,71 @@ export function Contactform() {
     handleSubmit,
     formState: { isSubmitting },
   } = useForm<FormValues>();
+  const regex = /^[6-9]{1}[0-9]{9}$/;
   const [checked, setChecked] = useState(true);
-  const onSubmit: SubmitHandler<FormValues> = data => {
-    const { name, email, mobile } = data;
-    if (name === "") {
-      toast.error("Name is required", {
-        duration: 40000,
-      });
-      return;
-    }
-    if (email === "") {
-      toast.error("Email is required", {
-        duration: 40000,
-      });
-      return;
-    }
-    if (mobile === "") {
-      toast.error("Mobile is required", {
-        duration: 40000,
+  const onSubmit: SubmitHandler<FormValues> = async formData => {
+    if (!formData) {
+      toast.error("Form data is undefined", {
+        duration: 4000,
+        id: "form-data-undefined",
       });
       return;
     }
 
-    console.log(data);
+    console.log(formData);
+    const { name, email, mobile } = formData;
+    console.log(name, email, mobile);
+
+    if (!name) {
+      toast.error("Name is required", {
+        duration: 4000,
+      });
+      return;
+    }
+    if (!email) {
+      toast.error("Email is required", {
+        duration: 4000,
+      });
+      return;
+    }
+    if (!mobile || !regex.test(mobile)) {
+      toast.error("Invalid mobile number", {
+        duration: 4000,
+        id: "invalid-number",
+      });
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        "https://api.sheetmonkey.io/form/oDcvRbjXo6KPBFYbEeuSPk",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Something went wrong");
+      }
+
+      toast.success("Form submitted successfully", {
+        id: "success",
+      });
+    } catch (error) {
+      if (error instanceof Error) {
+        toast.error(`Error: ${error.message}`, {
+          id: "error",
+        });
+      } else {
+        toast.error("An unexpected error occurred", {
+          id: "error",
+        });
+      }
+    }
   };
   return (
     <main className="max-w-7xl mx-auto">
@@ -54,37 +96,20 @@ export function Contactform() {
             className="focus:outline-none  border-b-[1px] border-b-black w-full placeholder:text-sm pl-2 bg-transparent"
             type="text"
             placeholder="Name"
-            {...(register("name"),
-            {
-              required: true,
-            })}
+            {...register("name")}
           />
           <div className="flex justify-between  gap-x-4  md:gap-x-10">
             <input
               className="focus:outline-none  border-b-[1px] border-b-black w-full placeholder:text-sm pl-2"
               type="email"
               placeholder="Email"
-              {...(register("email"),
-              {
-                required: true,
-              })}
+              {...register("email")}
             />
             <input
               className="focus:outline-none  border-b-[1px] border-b-black w-full placeholder:text-sm pl-2"
               type="tel"
               placeholder="Mobile"
-              pattern="/^[6-9]{1}[0-9]{9}$/"
-              {...(register("mobile"),
-              {
-                required: true,
-              })}
-              onChange={e => {
-                e.target.setCustomValidity(
-                  e.target.validity.patternMismatch
-                    ? "Please enter a valid mobile number"
-                    : ""
-                );
-              }}
+              {...register("mobile")}
             />
           </div>
           <div className="flex flex-col  md:flex-row justify-between space-y-2">

@@ -156,7 +156,7 @@ export function PropertyImageSlider() {
                 setCurrent(current - 1);
               }
             }}
-            className="left-[19%] bg-[#708090] text-white"
+            className="left-[18%] md:left-[19%] bg-[#708090] text-white"
           />
           <CarouselNext
             onClick={() => {
@@ -168,7 +168,7 @@ export function PropertyImageSlider() {
                 setCurrent(current + 1);
               }
             }}
-            className="-right-3 bg-[#708090] text-white"
+            className="-right-1.5 md:-right-3 bg-[#708090] text-white"
           />
         </Carousel>
         <div id="content-slider" className="space-y-5 max-md:mt-5 mx-10">

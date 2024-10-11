@@ -190,9 +190,11 @@ export default function page() {
               Need any help to find your home?
             </h2>
             <p className=" md:text-lg">We can help to find your dream home.</p>
-            <button className="bg-white text-black px-8 py-3">
-              Contact us
-            </button>
+            <div className="bg-white text-black w-fit">
+              <Link href="/contact" className=" px-8 py-3 block text-center">
+                Contact us
+              </Link>
+            </div>
           </div>
         </div>
         <div className="relative w-full h-[400px]">
