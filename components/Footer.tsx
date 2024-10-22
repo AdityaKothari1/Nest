@@ -33,7 +33,7 @@ export function Footer() {
             <p> Our property posting and listing.</p>
 
             <input
-              className="placeholder:text-sm pl-5 pr-20 py-2 text-black focus:outline-none"
+              className="placeholder:text-sm pl-5  py-2 text-black focus:outline-none"
               type="text"
               placeholder="Enter your email"
             />

@@ -101,6 +101,7 @@ export function PropertyImageSlider() {
     },
     []
   );
+
   useEffect(() => {
     if (!api) {
       return;
@@ -124,12 +125,15 @@ export function PropertyImageSlider() {
         <Carousel
           id="image-slider"
           setApi={setApi}
-          opts={{ loop: true, align: "end" }}
+          opts={{ loop: true, align: "end", watchDrag: false }}
           className=""
         >
           <CarouselContent className="-ml-5">
             {PropertyData.map((property, index) => (
-              <CarouselItem key={index} className="basis-[80%] pl-5">
+              <CarouselItem
+                key={index}
+                className={`basis-[80%] pl-5 CarouselItem`}
+              >
                 <div
                   className={`transition-all duration-300 w-full h-96 relative place-content-center`}
                 >
