@@ -41,7 +41,7 @@ export function Footer() {
           </div>
         </div>
         <div className="flex flex-col-reverse md:flex-row justify-between mt-10 gap-4">
-          <p>Copyright 2023. ALYF Proptech Pvt.Ltd. All Rights Reserved.</p>
+          <p>Copyright 2023. Nest Pvt.Ltd. All Rights Reserved.</p>
           <div className="flex  gap-10">
             <Link href="/privacy" className="">
               Privacy Policy
