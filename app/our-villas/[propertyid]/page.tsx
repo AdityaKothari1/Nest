@@ -1,3 +1,5 @@
+"use client";
+
 import { PropertyImageSlider, Contactform } from "@/components";
 import {
   Carousel,
@@ -13,6 +15,7 @@ export default function PropertyPage({
 }: {
   params: { propertyid: string };
 }) {
+  console.log(propertyid);
   return (
     <div className="mt-20 md:mt-24">
       {/* Banner */}

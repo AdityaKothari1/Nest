@@ -16,7 +16,6 @@ import { MenuIcon, XIcon } from "lucide-react";
 
 export const NAV_LINKS = [
   { id: "Our Homes", path: "/our-villas" },
-  { id: "How it works", path: "/how-it-works" },
   { id: "About Us", path: "/about" },
   { id: "Contact Us", path: "/contact" },
 ];
@@ -80,8 +79,9 @@ export function Header() {
           }}
         />
 
-        <motion.div className="relative h-8 w-32 shrink-0 md:h-10 md:w-56">
-          <motion.svg
+        <Link href="/" passHref>
+          <motion.div className="relative h-8 w-32 shrink-0 md:h-10 md:w-56 text-3xl pointer-events-auto text-white">
+            {/* <motion.svg
             id="logo"
             fill="#f5f5f5"
             xmlns="http://www.w3.org/2000/svg"
@@ -127,8 +127,10 @@ export function Header() {
                 </g>
               </g>
             </g>
-          </motion.svg>
-        </motion.div>
+          </motion.svg> */}
+            NEST
+          </motion.div>
+        </Link>
 
         <div className="z-20 w-full">
           <div className="relative isolate  max-md:hidden">

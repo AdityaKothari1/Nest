@@ -1,4 +1,5 @@
 "use client";
+import { supabaseClient } from "@/lib/supabase";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -52,20 +53,30 @@ export function Contactform() {
     }
 
     try {
-      const response = await fetch(
-        "https://api.sheetmonkey.io/form/oDcvRbjXo6KPBFYbEeuSPk",
-        {
+      const [supabaseResult, sheetMonkeyResponse] = await Promise.all([
+        supabaseClient.from("leads").insert([formData]),
+        fetch("https://api.sheetmonkey.io/form/oDcvRbjXo6KPBFYbEeuSPk", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(formData),
-        }
-      );
+        }),
+      ]);
 
-      if (!response.ok) {
-        throw new Error("Something went wrong");
+      const { data, error } = supabaseResult;
+
+      if (error) {
+        console.error("Error inserting data:", error);
+        throw new Error("Failed to submit form to database");
       }
+
+      if (!sheetMonkeyResponse.ok) {
+        throw new Error("Failed to submit form to SheetMonkey");
+      }
+
+      // Log success only if both operations were successful
+      console.log("Data inserted successfully:", data);
 
       toast.success("Form submitted successfully", {
         id: "success",
