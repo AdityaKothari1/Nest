@@ -8,6 +8,7 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from "@/components/ui/carousel";
+import Image from "next/image";
 import React from "react";
 
 export default function PropertyPage({
@@ -27,32 +28,36 @@ export default function PropertyPage({
         </div>
         <Carousel opts={{ loop: true, align: "center" }} className="">
           <CarouselContent className="relative max-md:aspect-square  md:h-svh  p-0 m-0 ">
-            <CarouselItem className="p-0 m-0">
-              <img
+            <CarouselItem className="p-0 m-0 relative w-full h-full">
+              <Image
                 src="/assets/herobanner/Banner-3.png"
                 alt="Property Banner"
-                className="w-full h-full object-cover"
+                className="object-cover"
+                fill
               />
             </CarouselItem>
-            <CarouselItem className="p-0 m-0">
-              <img
+            <CarouselItem className="p-0 m-0 relative w-full h-full">
+              <Image
                 src="/assets/herobanner/Banner-3.png"
                 alt="Property Banner"
-                className="w-full h-full object-cover"
+                className="object-cover"
+                fill
               />
             </CarouselItem>
-            <CarouselItem className="p-0 m-0">
-              <img
+            <CarouselItem className="p-0 m-0 relative w-full h-full">
+              <Image
                 src="/assets/herobanner/Banner-3.png"
                 alt="Property Banner"
-                className="w-full h-full object-cover"
+                className="object-cover"
+                fill
               />
             </CarouselItem>
-            <CarouselItem className="p-0 m-0">
-              <img
+            <CarouselItem className="p-0 m-0 relative w-full h-full">
+              <Image
                 src="/assets/herobanner/Banner-3.png"
                 alt="Property Banner"
-                className="w-full h-full object-cover"
+                className="object-cover"
+                fill
               />
             </CarouselItem>
           </CarouselContent>

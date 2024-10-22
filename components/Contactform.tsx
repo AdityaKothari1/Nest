@@ -1,7 +1,7 @@
 "use client";
 import { supabaseClient } from "@/lib/supabase";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
 
@@ -12,13 +12,8 @@ type FormValues = {
 };
 
 export function Contactform() {
-  const {
-    register,
-    handleSubmit,
-    formState: { isSubmitting },
-  } = useForm<FormValues>();
+  const { register, handleSubmit } = useForm<FormValues>();
   const regex = /^[6-9]{1}[0-9]{9}$/;
-  const [checked, setChecked] = useState(true);
   const onSubmit: SubmitHandler<FormValues> = async formData => {
     if (!formData) {
       toast.error("Form data is undefined", {

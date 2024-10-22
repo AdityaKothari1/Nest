@@ -7,7 +7,7 @@ export function Footer() {
       <footer className=" text-white py-10 max-md:px-5 max-w-7xl mx-auto ">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-14">
           <div className="w-20 h-20 ">
-            <img className="w-full h-full object-contain" src="" alt="" />
+            {/* <img className="w-full h-full object-contain" src="" alt="" /> */}
           </div>
           <div className="flex justify-between">
             <div className="space-y-2">
